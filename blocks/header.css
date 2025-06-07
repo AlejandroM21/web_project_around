@@ -1,0 +1,13 @@
+.header {
+  border-bottom: 1px solid #545454;
+  max-width: 880px;
+  width: 100%;
+  margin: 45px auto 0;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.header__logo {
+  margin-bottom: 41px;
+  object-fit: cover;
+}

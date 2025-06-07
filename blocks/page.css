@@ -1,0 +1,16 @@
+.page {
+  background-color: #000000;
+  font-family: "Intel", Arial, Helvetica, sans-serif;
+  color: #fff;
+  max-width: 1280px;
+  min-height: 100%;
+  margin: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}

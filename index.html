@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Alejandro Melendez" />
+    <meta name="keywords" content="tripleten, EE.UU" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="shortcut icon" href="./favicon.png" />
+    <title>Alrededor de los EE.UU.</title>
+  </head>
+  <body>
+    <div class="page">
+      <!-- Header -->
+      <header class="header">
+        <img
+          class="header__logo"
+          src="./images/header.png"
+          alt="Alrededor de EE.UU. logo "
+        />
+      </header>
+      <!-- main -->
+      <main class="main">
+        <!--Profile -->
+        <section class="profile">
+          <div class="profile__avatar">
+            <img
+              src="./images/avatar.jpg"
+              alt="avatar"
+              class="profile__avatar-image"
+            />
+          </div>
+
+          <div class="profile__info">
+            <div class="profile__info-name">
+              <h2 class="profile__name">Jacques Cousteau</h2>
+              <button class="profile__button-edit" aria-label="Editar perfil">
+                <img
+                  class="profile__button-edit-image"
+                  src="/images/button_edit.png"
+                  alt="Ícono de lápiz para editar perfil"
+                />
+              </button>
+            </div>
+            <p class="profile__about-me block">Explorador</p>
+          </div>
+
+          <button
+            class="profile__button-add"
+            aria-label="Agregar nuevo elemento"
+          >
+            <!-- <img
+              class="profile__button-add-image"
+              src="/images/button_add.png"
+              alt="Ícono de suma para agregar lugares"
+            /> -->
+          </button>
+        </section>
+        <!-- Cards -->
+        <section class="elements">
+          <article class="elements__card">
+            <img
+              class="elements__card-image"
+              src="/images/card__image_yosemite.jpg"
+              alt="fotografia de Valle de Yosemite"
+            />
+
+            <div class="elements__card-info">
+              <h3 class="elements__card-title block">Valle de Yosemite</h3>
+              <img
+                class="elements__logo-favorite"
+                src="./images/logo_favorite.svg"
+                alt="Agregar a favoritos"
+              />
+            </div>
+          </article>
+
+          <article class="elements__card">
+            <img
+              class="elements__card-image"
+              src="/images/card__image-louise.png"
+              alt="fotografia de Lago Louise"
+            />
+
+            <div class="elements__card-info">
+              <h3 class="elements__card-title block">Lago Louise</h3>
+              <img
+                class="elements__logo-favorite"
+                src="./images/logo_favorite.svg"
+                alt="Agregar a favoritos"
+              />
+            </div>
+          </article>
+
+          <article class="elements__card">
+            <img
+              class="elements__card-image"
+              src="/images/card__image-calvas.png"
+              alt="fotografia de Montañas Calvas"
+            />
+
+            <div class="elements__card-info">
+              <h3 class="elements__card-title block">Montañas Calvas</h3>
+              <img
+                class="elements__logo-favorite"
+                src="./images/logo_favorite.svg"
+                alt="Agregar a favoritos"
+              />
+            </div>
+          </article>
+
+          <article class="elements__card">
+            <img
+              class="elements__card-image"
+              src="/images/card__image-latemar.png"
+              alt="fotografia de Latemar"
+            />
+
+            <div class="elements__card-info">
+              <h3 class="elements__card-title block">Latemar</h3>
+              <img
+                class="elements__logo-favorite"
+                src="./images/logo_favorite.svg"
+                alt="Agregar a favoritos"
+              />
+            </div>
+          </article>
+
+          <article class="elements__card">
+            <img
+              class="elements__card-image"
+              src="/images/card__image-vanoise.png"
+              alt="fotografia de Vanois National"
+            />
+
+            <div class="elements__card-info">
+              <h3 class="elements__card-title block">Vanois National</h3>
+              <img
+                class="elements__logo-favorite"
+                src="./images/logo_favorite.svg"
+                alt="Agregar a favoritos"
+              />
+            </div>
+          </article>
+
+          <article class="elements__card">
+            <img
+              class="elements__card-image"
+              src="/images/card__image-braies.png"
+              alt="fotografia de Lago di Braies"
+            />
+
+            <div class="elements__card-info">
+              <h3 class="elements__card-title block">Lago di Braies</h3>
+              <button class="elements__card-favorite" aria-pressed="false">
+                <!-- <img
+                  class="elements__logo-favorite"
+                  src="./images/logo_favorite.svg"
+                  alt="Agregar a favoritos"
+                /> -->
+              </button>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <div class="popup__overlay">
+        <div class="popup">
+          <button
+            class="popup__button-close"
+            aria-label="Cerrar editor de perfil"
+          >
+            <img
+              src="./images/Close_Icon.png"
+              alt="Cerrar editor de perfil"
+              class="popup__icono-close"
+            />
+          </button>
+          <h3 class="popup__title">Editar perfil</h3>
+          <form class="popup__container">
+            <label for="name">
+              <input
+                type="text"
+                class="popup__text"
+                id="name"
+                placeholder="Nombre"
+                required
+              />
+            </label>
+
+            <label for="about-me">
+              <input
+                type="text"
+                class="popup__text"
+                id="about-me"
+                placeholder="Acerca de mi"
+                required
+              />
+            </label>
+            <button type="submit" class="popup__save">Guardar</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2025 Alejandro Melendez</p>
+      </footer>
+    </div>
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>
