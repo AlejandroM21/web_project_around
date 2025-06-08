@@ -1,8 +1,7 @@
-.popup__overlay {
+.popup {
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.6); /* fondo oscuro */
-  /* display: flex; */
   justify-content: center;
   align-items: center;
   z-index: 100;
@@ -13,7 +12,7 @@
   display: flex;
 }
 
-.popup {
+.popup__overlay {
   background-color: #ffffff;
   max-width: 430px;
   width: 100%;

@@ -1,5 +1,5 @@
 // Seleccionamos el popup y los botones
-let popup = document.querySelector(".popup__overlay");
+let popup = document.querySelector(".popup");
 let openButton = document.querySelector(".profile__button-edit");
 let closeButton = document.querySelector(".popup__button-close");
 let form = document.querySelector(".popup__container");
