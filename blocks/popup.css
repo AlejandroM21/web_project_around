@@ -21,6 +21,7 @@
   padding: 34px 37px 37px;
   position: relative;
   z-index: 101;
+  margin: 0 10px;
 }
 
 .popup__button-close {
