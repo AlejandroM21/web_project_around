@@ -12,17 +12,19 @@ let profileAbout = document.querySelector(".profile__about-me");
 let btnAddForm = document.querySelector(".profile__button-add");
 let contentFormClone = document.querySelector("#form-clone");
 
-//Seleccionar contenedor para agregar tarjetas
+//Seleccionamos el template y el contenedor de tarjetas
 let cards = document.querySelector(".elements");
+const cardTemplate = document.querySelector("#elements-template").content;
 
 // Función para crear una tarjeta
 function addCard(cardTitle, cardImage) {
-  const cardTemplate = document.querySelector("#elements-template").content;
   const cardElement = cardTemplate
     .querySelector(".elements__card")
-    .cloneNode(true);
+    .cloneNode(true); // Clonamos el template
 
+  // Asignamos la imagen y el texto
   cardElement.querySelector(".elements__card-title").textContent = cardTitle;
+
   cardElement
     .querySelector(".elements__card-image")
     .setAttribute("src", cardImage);
@@ -30,6 +32,13 @@ function addCard(cardTitle, cardImage) {
   cardElement
     .querySelector(".elements__card-image")
     .setAttribute("alt", `fotografia de: ${cardTitle}`);
+
+  // Evento para dar like
+  cardElement
+    .querySelector(".elements__card-favorite")
+    .addEventListener("click", (evt) => {
+      evt.target.classList.toggle("elements__card-favorite_active");
+    });
 
   cards.prepend(cardElement);
 }
@@ -110,6 +119,8 @@ btnAddForm.addEventListener("click", () => {
   formClone.classList.add("popup_opened");
   contentFormClone.append(formClone);
 });
+
+const btnFavorite = elements__card - favorite;
 
 // Función para abrir popup
 function openPopup() {
