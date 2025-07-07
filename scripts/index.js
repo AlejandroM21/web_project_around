@@ -40,6 +40,12 @@ function addCard(cardTitle, cardImage) {
       evt.target.classList.toggle("elements__card-favorite_active");
     });
 
+  cardElement
+    .querySelector(".elements__trash")
+    .addEventListener("click", () => {
+      cardElement.remove();
+    });
+
   cards.prepend(cardElement);
 }
 
@@ -119,8 +125,6 @@ btnAddForm.addEventListener("click", () => {
   formClone.classList.add("popup_opened");
   contentFormClone.append(formClone);
 });
-
-const btnFavorite = elements__card - favorite;
 
 // Función para abrir popup
 function openPopup() {
