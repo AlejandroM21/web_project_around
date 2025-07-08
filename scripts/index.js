@@ -1,20 +1,40 @@
 // Seleccionamos el popup y los botones
-let popup = document.querySelector(".popup");
-let openButton = document.querySelector(".profile__button-edit");
-let closeButton = document.querySelector(".popup__button-close");
-let form = document.querySelector(".popup__container");
-let nameInput = document.querySelector("#name");
-let jobInput = document.querySelector("#about-me");
-let profileName = document.querySelector(".profile__name");
-let profileAbout = document.querySelector(".profile__about-me");
+const popup = document.querySelector(".popup");
+const openButton = document.querySelector(".profile__button-edit");
+const closeButton = document.querySelector(".popup__button-close");
+const form = document.querySelector(".popup__container");
+const nameInput = document.querySelector("#name");
+const jobInput = document.querySelector("#about-me");
+const profileName = document.querySelector(".profile__name");
+const profileAbout = document.querySelector(".profile__about-me");
 
 // Seleccionamos los elementos relacionados con el formulario clonado
-let btnAddForm = document.querySelector(".profile__button-add");
-let contentFormClone = document.querySelector("#form-clone");
+const btnAddForm = document.querySelector(".profile__button-add");
+const contentFormClone = document.querySelector("#form-clone");
 
 //Seleccionamos el template y el contenedor de tarjetas
-let cards = document.querySelector(".elements");
+const cards = document.querySelector(".elements");
 const cardTemplate = document.querySelector("#elements-template").content;
+
+//Seleccionamos abrir imagen
+const imagePopup = document.querySelector(".card-popup");
+const popupImage = document.querySelector(".card-popup__image");
+const popupCaption = document.querySelector(".card-popup__caption");
+const closeButtonCardPopup = document.querySelector(
+  ".card-popup__button-close"
+);
+
+//Función para abrir imagen
+function openImagePopup(imageSrc, title) {
+  popupImage.src = imageSrc;
+  popupImage.alt = `fotografía de: ${title}`;
+  popupCaption.textContent = title;
+  imagePopup.classList.add("card-popup_opened");
+}
+
+closeButtonCardPopup.addEventListener("click", () => {
+  imagePopup.classList.remove("card-popup_opened");
+});
 
 // Función para crear una tarjeta
 function addCard(cardTitle, cardImage) {
@@ -45,6 +65,16 @@ function addCard(cardTitle, cardImage) {
     .addEventListener("click", () => {
       cardElement.remove();
     });
+
+  //Abrir Card
+  const image = cardElement.querySelector(".elements__card-image");
+  image.src = cardImage;
+  image.alt = `fotografía de: ${cardTitle}`;
+
+  // Escucha el clic en la imagen
+  image.addEventListener("click", () => {
+    openImagePopup(cardImage, cardTitle);
+  });
 
   cards.prepend(cardElement);
 }
@@ -94,7 +124,8 @@ btnAddForm.addEventListener("click", () => {
   // Limpiamos los inputs y cambiamos placeholders
   const inputs = formClone.querySelectorAll("input");
   inputs.forEach((input) => {
-    inputs.value = "";
+    inputs[0].value = "";
+    inputs[1].value = "";
     inputs[0].placeholder = "Titulo";
     inputs[1].placeholder = "Enlace a la Imagen";
   });
