@@ -1,7 +1,4 @@
 @media (max-width: 736px) {
-  .profile {
-    justify-content: center;
-  }
   .profile__info {
     flex-wrap: nowrap;
     align-items: center;
@@ -12,25 +9,26 @@
   }
 }
 
-/* Ventana 530px */
+/* Ventana 576px */
 @media (max-width: 576px) {
-  .profile__info {
-    flex-wrap: nowrap;
-  }
-  .profile__button-add {
-    display: block;
-    width: 100%;
-    margin-top: 30px;
-  }
   .profile {
     display: block;
-    justify-items: center;
   }
 
+  .profile__avatar {
+    margin: 40px auto 0;
+  }
   .profile__info {
     margin-left: 0;
     align-items: center;
   }
+
+  .profile__info-name {
+    gap: 10px;
+    margin-bottom: 5px;
+    margin-top: 15px;
+  }
+
   .popup__button-close {
     top: -54px;
     right: -7px;
@@ -54,22 +52,6 @@
     height: 24px;
   }
 
-  .profile {
-    display: block;
-    justify-items: center;
-  }
-
-  .profile__info {
-    margin-left: 0;
-    align-items: center;
-  }
-
-  .profile__info-name {
-    gap: 10px;
-    margin-bottom: 5px;
-    margin-top: 15px;
-  }
-
   .profile__name {
     font-size: 22px;
   }
@@ -86,8 +68,6 @@
   }
 
   .profile__button-add {
-    width: 100%;
-    display: block;
     margin: 0;
   }
 
@@ -99,6 +79,10 @@
     top: -54px;
     right: -7px;
     cursor: pointer;
+  }
+
+  .card-popup__image {
+    max-width: 240px;
   }
 
   .footer {
