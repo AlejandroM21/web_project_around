@@ -88,3 +88,34 @@
 .popup__save:hover {
   opacity: 0.8;
 }
+
+.popup__text-error {
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+  padding: 0;
+  color: #ff0000;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.popup__text-error_active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup__text_type-error:invalid {
+  border-bottom: 1px solid #ff0000;
+}
+
+.popup__submit_inactive {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  border: 1px solid #c4c4c4;
+  background: transparent;
+  color: #c4c4c4;
+  border-radius: 2px;
+}

@@ -3,6 +3,7 @@ const popup = document.querySelector(".popup");
 const openButton = document.querySelector(".profile__button-edit");
 const closeButton = document.querySelector(".popup__button-close");
 const form = document.querySelector(".popup__container");
+const formInput = form.querySelector(".popup__text");
 const nameInput = document.querySelector("#name");
 const jobInput = document.querySelector("#about-me");
 const profileName = document.querySelector(".profile__name");
@@ -183,3 +184,106 @@ function handleProfileFormSubmit(evt) {
 openButton.addEventListener("click", openPopup);
 closeButton.addEventListener("click", closePopup);
 form.addEventListener("submit", handleProfileFormSubmit);
+
+//validación
+
+//función mostrar error
+const showInputError = (formElement, inputElement, errorMessage) => {
+  // Selecciona cada elemento del mensaje de error utilizando su nombre de clase único con plantillas literales
+  const formError = formElement.querySelector(`.${inputElement.id}-error`);
+
+  inputElement.classList.add("popup__text_type-error");
+  formError.textContent = errorMessage;
+  formError.classList.add("popup__text-error_active");
+};
+
+//función ocultar error
+const hideInputError = (formElement, inputElement) => {
+  // Selecciona cada elemento del mensaje de error utilizando su nombre de clase único con plantillas literales
+  const formError = formElement.querySelector(`.${inputElement.id}-error`);
+
+  inputElement.classList.remove("popup__text_type-error");
+  formError.classList.remove("popup__text-error_active");
+  formError.textContent = "";
+};
+
+//función Añadir controladores a todos los campos del formulario
+const setEventListeners = (formElement) => {
+  // crea un array con todos los campos dentro del formulario
+  const inputList = Array.from(formElement.querySelectorAll(".popup__text"));
+  // Encuentra el botón de envío en el formulario actual
+  const buttonElement = formElement.querySelector(".popup__save");
+
+  // Itera sobre el array obtenido
+  inputList.forEach((inputElement) => {
+    // agregamos el controlador de eventos de entrada a cada campo
+    inputElement.addEventListener("input", () => {
+      // Llamamos a la función isValid() dentro del callback
+      // y pásamos el formulario y el elemento a comprobar
+      isValid(formElement, inputElement);
+      // Llama a toggleButtonState() y pásale un array de campos y el botón
+      toggleButtonState(inputList, buttonElement);
+    });
+  });
+  // toggleButtonState(inputList, formElement.querySelector(".popup__save"));
+};
+
+//función Agregar controladores a todos los formularios
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll(".popup__container"));
+  formList.forEach((formElement) => {
+    formElement.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+    });
+    // Llama a la función setEventListeners() para cada formulario
+    // tomando un elemento del formulario como argumento
+    setEventListeners(formElement);
+  });
+};
+enableValidation();
+
+//fiunción para validar si hay entradas validas en los campos iterando, some devuelve true si encuantra un campo vacio o error (false)
+
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => !inputElement.validity.valid);
+};
+
+// función para controlar el botón de envío
+const toggleButtonState = (inputList, buttonElement) => {
+  // Si hay al menos una entrada que no es válida
+  if (hasInvalidInput(inputList)) {
+    // hace que el botón esté inactivo
+    buttonElement.classList.add("popup__submit_inactive");
+  } else {
+    buttonElement.classList.remove("popup__submit_inactive");
+  }
+};
+
+//función comprobar campos validos y llamar a las funciónes de mostrar u ocultar
+const isValid = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+};
+
+// //cerrar popups con Escape o clic fuera
+// document.addEventListener("keydown", (evt) => {
+//   if (evt.key === "Escape") {
+//     document
+//       .querySelectorAll(".popup_opened, .card-popup_opened")
+//       .forEach((popup) => {
+//         popup.classList.remove("popup_opened", "card-popup_opened");
+//       });
+//   }
+// });
+// //cerrar al hacer clic fuera
+// document.addEventListener("click", (evt) => {
+//   if (
+//     evt.target.classList.contains("popup_opened") ||
+//     evt.target.classList.contains("card-popup_opened")
+//   ) {
+//     evt.target.classList.remove("popup_opened", "card-popup_opened");
+//   }
+// });

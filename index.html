@@ -87,15 +87,19 @@
             />
           </button>
           <h3 class="popup__title">Editar perfil</h3>
-          <form class="popup__container">
+
+          <form class="popup__container" novalidate>
             <label for="name">
               <input
                 type="text"
                 class="popup__text"
                 id="name"
                 placeholder="Nombre"
+                minlength="2"
+                maxlength="40"
                 required
               />
+              <span class="popup__text-error name-error"></span>
             </label>
 
             <label for="about-me">
@@ -104,9 +108,13 @@
                 class="popup__text"
                 id="about-me"
                 placeholder="Acerca de mi"
+                minlength="2"
+                maxlength="200"
                 required
               />
+              <span class="popup__text-error about-me-error"></span>
             </label>
+
             <button type="submit" class="popup__save">Guardar</button>
           </form>
         </div>
