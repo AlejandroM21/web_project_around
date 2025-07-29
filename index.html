@@ -49,6 +49,7 @@
           <button
             class="profile__button-add"
             aria-label="Agregar nuevo elemento"
+            title="Agregar nuevo"
           ></button>
         </section>
 
@@ -87,27 +88,35 @@
             />
           </button>
           <h3 class="popup__title">Editar perfil</h3>
-          <form class="popup__container">
+
+          <form class="popup__form" novalidate>
             <label for="name">
               <input
                 type="text"
-                class="popup__text"
+                class="popup__input"
                 id="name"
                 placeholder="Nombre"
+                minlength="2"
+                maxlength="40"
                 required
               />
+              <span class="popup__error name-error"></span>
             </label>
 
             <label for="about-me">
               <input
                 type="text"
-                class="popup__text"
+                class="popup__input"
                 id="about-me"
                 placeholder="Acerca de mi"
+                minlength="2"
+                maxlength="200"
                 required
               />
+              <span class="popup__error about-me-error"></span>
             </label>
-            <button type="submit" class="popup__save">Guardar</button>
+
+            <button type="submit" class="popup__button">Guardar</button>
           </form>
         </div>
       </div>
@@ -125,7 +134,7 @@
           <img
             class="card-popup__image"
             src="./images/card__image-latemar.png"
-            alt=""
+            alt="latemar"
           />
           <h3 class="card-popup__caption">hola</h3>
         </div>
@@ -139,6 +148,8 @@
         <p class="footer__copyright">&copy; 2025 Alejandro Melendez</p>
       </footer>
     </div>
+
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
