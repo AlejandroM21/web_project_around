@@ -1,10 +1,8 @@
-# Proyecto 7: Tripleten web_project_around
+# Proyecto 7, 8 y 9: Tripleten web_project_around
 
 # 🗺️ Alrededor de los EE.UU.
 
-Bienvenido a **Alrededor de los EE.UU.**, una aplicación web interactiva desarrollada con HTML, CSS y JavaScript puro. En este proyecto, los usuarios pueden **editar su perfil**, **añadir nuevas tarjetas con imágenes**, **dar "me gusta"** a las fotos y **eliminar tarjetas** de forma dinámica.
-
----
+## Bienvenido a Alrededor de los EE.UU., una aplicación web interactiva desarrollada con HTML, CSS y JavaScript puro. En este proyecto, los usuarios pueden editar su perfil, añadir nuevas tarjetas con imágenes, dar "me gusta" a las fotos y eliminar tarjetas de forma dinámica, con formularios que cuentan con validación avanzada y gestión eficiente del estado.
 
 ## 📚 Tabla de Contenido
 
@@ -21,10 +19,10 @@ Bienvenido a **Alrededor de los EE.UU.**, una aplicación web interactiva desarr
 Este proyecto fue creado como parte del curso de desarrollo web para aplicar conceptos esenciales como:
 
 - Manipulación dinámica del DOM.
-- Creación y control de ventanas emergentes (modales).
-- Validación y gestión de formularios.
+- Creación y control de ventanas emergentes (modales) con apertura y cierre controlados.
+- Validación y gestión avanzada de formularios con mensajes de error claros y activación/desactivación dinámica del botón enviar.
 - Interacción del usuario sin uso de librerías externas.
-- Formularios interactivos.
+- Formularios interactivos, originales y clonados, con lógica modular y reutilizable.
 - Buenas prácticas con HTML semántico y CSS modular.
 - Interactividad sin frameworks externos.
 
@@ -34,7 +32,7 @@ Este proyecto fue creado como parte del curso de desarrollo web para aplicar con
 
 - ✅ **HTML5** – estructura semántica clara.
 - 🎨 **CSS3** – diseño responsivo y modular.
-- ⚙️ **JavaScript (Vanilla)** – lógica interactiva.
+- ⚙️ **JavaScript** – lógica interactiva, validación y modularidad.
 - 🌐 **Git & GitHub** – control de versiones y despliegue.
 
 ---
@@ -42,11 +40,11 @@ Este proyecto fue creado como parte del curso de desarrollo web para aplicar con
 ## ⚙️ Funcionalidades Clave
 
 - ✏️ Edición del perfil con carga previa de datos.
-- ➕ Añadir nuevas tarjetas (imagen + título).
+- ➕ Añadir nuevas tarjetas (imagen + título) mediante formularios clonados con validación..
 - ❤️ Dar "me gusta" a cualquier tarjeta.
 - 🗑️ Eliminar tarjetas de forma dinámica.
 - 🔍 Visualizar imágenes en tamaño ampliado con popup.
-- 🧠 Lógica separada para formularios originales y clonados.
+- 🧠 Validación modular para formularios originales y clonados.
 
 ---
 

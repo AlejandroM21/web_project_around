@@ -1,23 +1,29 @@
-// Seleccionamos el popup y los botones
+// ======== SECCIÓN: Selección de elementos del DOM ==========
+
+// Popup de editar perfil
 const popup = document.querySelector(".popup");
 const openButton = document.querySelector(".profile__button-edit");
 const closeButton = document.querySelector(".popup__button-close");
-const form = document.querySelector(".popup__container");
-const formInput = form.querySelector(".popup__text");
+
+// Formulario y campos del popup original
+const form = document.querySelector(".popup__form");
 const nameInput = document.querySelector("#name");
 const jobInput = document.querySelector("#about-me");
+// const formInput = form.querySelector(".popup__input");
+
+// Campos de perfil (los que se actualizan)
 const profileName = document.querySelector(".profile__name");
 const profileAbout = document.querySelector(".profile__about-me");
 
-// Seleccionamos los elementos relacionados con el formulario clonado
+// Botón para agregar nuevas tarjetas y contenedor para formularios clonados
 const btnAddForm = document.querySelector(".profile__button-add");
 const contentFormClone = document.querySelector("#form-clone");
 
-//Seleccionamos el template y el contenedor de tarjetas
+// Template y contenedor de tarjetas
 const cards = document.querySelector(".elements");
 const cardTemplate = document.querySelector("#elements-template").content;
 
-//Seleccionamos abrir imagen
+// Popup de imagen ampliada
 const imagePopup = document.querySelector(".card-popup");
 const popupImage = document.querySelector(".card-popup__image");
 const popupCaption = document.querySelector(".card-popup__caption");
@@ -25,7 +31,9 @@ const closeButtonCardPopup = document.querySelector(
   ".card-popup__button-close"
 );
 
-//Función para abrir imagen
+// ========= SECCIÓN: Funciones de tarjetas ==========
+
+// Abre el popup con la imagen ampliada
 function openImagePopup(imageSrc, title) {
   popupImage.src = imageSrc;
   popupImage.alt = `fotografía de: ${title}`;
@@ -33,11 +41,12 @@ function openImagePopup(imageSrc, title) {
   imagePopup.classList.add("card-popup_opened");
 }
 
+// Cierra el popup de imagen ampliada
 closeButtonCardPopup.addEventListener("click", () => {
   imagePopup.classList.remove("card-popup_opened");
 });
 
-// Función para crear una tarjeta
+// Crea y añade una tarjeta al DOM
 function addCard(cardTitle, cardImage) {
   const cardElement = cardTemplate
     .querySelector(".elements__card")
@@ -45,43 +54,36 @@ function addCard(cardTitle, cardImage) {
 
   // Asignamos la imagen y el texto
   cardElement.querySelector(".elements__card-title").textContent = cardTitle;
+  const image = cardElement.querySelector(".elements__card-image");
+  image.src = cardImage;
+  image.alt = `fotografía de: ${cardTitle}`;
 
-  cardElement
-    .querySelector(".elements__card-image")
-    .setAttribute("src", cardImage);
+  // Evento: abrir imagen ampliada
+  image.addEventListener("click", () => {
+    openImagePopup(cardImage, cardTitle);
+  });
 
-  cardElement
-    .querySelector(".elements__card-image")
-    .setAttribute("alt", `fotografia de: ${cardTitle}`);
-
-  // Evento para dar like
+  // Evento: toggle de "like"
   cardElement
     .querySelector(".elements__card-favorite")
     .addEventListener("click", (evt) => {
       evt.target.classList.toggle("elements__card-favorite_active");
     });
 
+  // Evento: eliminar tarjeta
   cardElement
     .querySelector(".elements__trash")
     .addEventListener("click", () => {
       cardElement.remove();
     });
 
-  //Abrir Card
-  const image = cardElement.querySelector(".elements__card-image");
-  image.src = cardImage;
-  image.alt = `fotografía de: ${cardTitle}`;
-
-  // Escucha el clic en la imagen
-  image.addEventListener("click", () => {
-    openImagePopup(cardImage, cardTitle);
-  });
-
+  // Inserta al principio
   cards.prepend(cardElement);
 }
 
-// tarjetas iniciales
+// ======== SECCIÓN: Tarjetas iniciales =========
 
+// tarjetas iniciales
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -109,69 +111,86 @@ const initialCards = [
   },
 ];
 
-// Agregar tarjetas iniciales
+// Agregar tarjetas iniciales con el Array initialCards
 initialCards.forEach((card) => {
   addCard(card.name, card.link);
 });
 
-// Evento para clonar y abrir formulario nuevo
-btnAddForm.addEventListener("click", () => {
-  const formClone = popup.cloneNode(true);
+// ======== SECCIÓN: Lógica para formulario clonado =========
 
-  // Cambiamos el texto del popup
+// Evento para clonar y abrir el formulario nuevo
+
+//Encapsular el código del clonador de formularios en una función
+function createFormClone() {
+  const formClone = popup.cloneNode(true); // Clonamos el popup original
+
+  // Modificamos textos del formulario clonado
   formClone.querySelector(".popup__title").textContent = "Nuevo Lugar";
-  formClone.querySelector(".popup__save").textContent = "Crear";
+  formClone.querySelector(".popup__button").textContent = "Crear";
 
-  // Limpiamos los inputs y cambiamos placeholders
+  // Configuramos los inputs del formulario clonado
   const inputs = formClone.querySelectorAll("input");
-  inputs.forEach((input) => {
-    inputs[0].value = "";
-    inputs[1].value = "";
-    inputs[0].placeholder = "Titulo";
-    inputs[1].placeholder = "Enlace a la Imagen";
-  });
 
-  // Botón cerrar del formulario clonado
+  const [titleInput, urlInput] = inputs;
+
+  titleInput.value = "";
+  titleInput.placeholder = "Titulo";
+  titleInput.setAttribute("maxlength", 30);
+  urlInput.value = "";
+  urlInput.placeholder = "Enlace a la Imagen";
+  urlInput.type = "url";
+  urlInput.removeAttribute("minlength");
+  urlInput.removeAttribute("maxlength");
+
+  // Evento: cerrar el formulario clonado
   const closeBtnClon = formClone.querySelector(".popup__button-close");
   closeBtnClon.addEventListener("click", () => {
     formClone.remove();
   });
 
-  // Evento submit del formulario clonado
+  // Evento: envío del formulario clonado
   const formInClone = formClone.querySelector("form");
   formInClone.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    //Obtenemos los valores ingresados al momento del submit
+    //Obtiene los valores ingresados al momento de enviar
     const cardTitle = inputs[0].value;
     const cardImage = inputs[1].value;
 
-    // Creamos la tarjeta
+    // Crea la tarjeta
     addCard(cardTitle, cardImage);
 
-    // Cerramos y eliminamos el formulario
+    // Cierra y elimina el formulario
     formClone.remove();
   });
 
   // Mostramos el formulario clonado
   formClone.classList.add("popup_opened");
   contentFormClone.append(formClone);
-});
 
-// Función para abrir popup
+  // Habilitamos la validación en el nuevo formulario clonado
+  enableValidation(validationConfig);
+
+  return formClone;
+}
+
+btnAddForm.addEventListener("click", createFormClone);
+
+// ======== SECCIÓN: Popup de perfil =========
+
+// Abre el popup original de editar perfil y carga datos actuales
 function openPopup() {
-  // Carga los datos actuales en los inputs
   nameInput.value = profileName.textContent;
   jobInput.value = profileAbout.textContent;
-
   popup.classList.add("popup_opened");
 }
 
-// Función para cerrar popup
+// Cierra el popup
 function closePopup() {
   popup.classList.remove("popup_opened");
 }
 
+// Maneja el envío del formulario de perfil
 function handleProfileFormSubmit(evt) {
   evt.preventDefault(); // Previene el envío del form
   profileName.textContent = nameInput.value;
@@ -179,111 +198,8 @@ function handleProfileFormSubmit(evt) {
   closePopup();
 }
 
-// Asociamos eventos
+// ======== SECCIÓN: Eventos =========
 
 openButton.addEventListener("click", openPopup);
 closeButton.addEventListener("click", closePopup);
 form.addEventListener("submit", handleProfileFormSubmit);
-
-//validación
-
-//función mostrar error
-const showInputError = (formElement, inputElement, errorMessage) => {
-  // Selecciona cada elemento del mensaje de error utilizando su nombre de clase único con plantillas literales
-  const formError = formElement.querySelector(`.${inputElement.id}-error`);
-
-  inputElement.classList.add("popup__text_type-error");
-  formError.textContent = errorMessage;
-  formError.classList.add("popup__text-error_active");
-};
-
-//función ocultar error
-const hideInputError = (formElement, inputElement) => {
-  // Selecciona cada elemento del mensaje de error utilizando su nombre de clase único con plantillas literales
-  const formError = formElement.querySelector(`.${inputElement.id}-error`);
-
-  inputElement.classList.remove("popup__text_type-error");
-  formError.classList.remove("popup__text-error_active");
-  formError.textContent = "";
-};
-
-//función Añadir controladores a todos los campos del formulario
-const setEventListeners = (formElement) => {
-  // crea un array con todos los campos dentro del formulario
-  const inputList = Array.from(formElement.querySelectorAll(".popup__text"));
-  // Encuentra el botón de envío en el formulario actual
-  const buttonElement = formElement.querySelector(".popup__save");
-
-  // Itera sobre el array obtenido
-  inputList.forEach((inputElement) => {
-    // agregamos el controlador de eventos de entrada a cada campo
-    inputElement.addEventListener("input", () => {
-      // Llamamos a la función isValid() dentro del callback
-      // y pásamos el formulario y el elemento a comprobar
-      isValid(formElement, inputElement);
-      // Llama a toggleButtonState() y pásale un array de campos y el botón
-      toggleButtonState(inputList, buttonElement);
-    });
-  });
-  // toggleButtonState(inputList, formElement.querySelector(".popup__save"));
-};
-
-//función Agregar controladores a todos los formularios
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(".popup__container"));
-  formList.forEach((formElement) => {
-    formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-    });
-    // Llama a la función setEventListeners() para cada formulario
-    // tomando un elemento del formulario como argumento
-    setEventListeners(formElement);
-  });
-};
-enableValidation();
-
-//fiunción para validar si hay entradas validas en los campos iterando, some devuelve true si encuantra un campo vacio o error (false)
-
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => !inputElement.validity.valid);
-};
-
-// función para controlar el botón de envío
-const toggleButtonState = (inputList, buttonElement) => {
-  // Si hay al menos una entrada que no es válida
-  if (hasInvalidInput(inputList)) {
-    // hace que el botón esté inactivo
-    buttonElement.classList.add("popup__submit_inactive");
-  } else {
-    buttonElement.classList.remove("popup__submit_inactive");
-  }
-};
-
-//función comprobar campos validos y llamar a las funciónes de mostrar u ocultar
-const isValid = (formElement, inputElement) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
-  } else {
-    hideInputError(formElement, inputElement);
-  }
-};
-
-// //cerrar popups con Escape o clic fuera
-// document.addEventListener("keydown", (evt) => {
-//   if (evt.key === "Escape") {
-//     document
-//       .querySelectorAll(".popup_opened, .card-popup_opened")
-//       .forEach((popup) => {
-//         popup.classList.remove("popup_opened", "card-popup_opened");
-//       });
-//   }
-// });
-// //cerrar al hacer clic fuera
-// document.addEventListener("click", (evt) => {
-//   if (
-//     evt.target.classList.contains("popup_opened") ||
-//     evt.target.classList.contains("card-popup_opened")
-//   ) {
-//     evt.target.classList.remove("popup_opened", "card-popup_opened");
-//   }
-// });
