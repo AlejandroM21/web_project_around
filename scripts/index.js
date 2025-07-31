@@ -203,3 +203,27 @@ function handleProfileFormSubmit(evt) {
 openButton.addEventListener("click", openPopup);
 closeButton.addEventListener("click", closePopup);
 form.addEventListener("submit", handleProfileFormSubmit);
+
+// --- CERRAR TODOS LOS POPUPS CON ESCAPE ---
+
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    //Busca todos los popups abiertos
+    document
+      .querySelectorAll(".popup_opened, .card-popup_opened")
+      .forEach((popup) => {
+        popup.classList.remove("popup_opened", "card-popup_opened");
+      });
+  }
+});
+
+// --- CERRAR POPUPS HACIENDO CLIC EN EL FONDO OSCURO ---
+
+document.addEventListener("click", (evt) => {
+  if (
+    evt.target.classList.contains("popup_opened") ||
+    evt.target.classList.contains("card-popup_opened")
+  ) {
+    evt.target.classList.remove("popup_opened", "card-popup_opened");
+  }
+});
