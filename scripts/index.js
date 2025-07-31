@@ -167,6 +167,7 @@ function createFormClone() {
   // Mostramos el formulario clonado
   formClone.classList.add("popup_opened");
   contentFormClone.append(formClone);
+  document.addEventListener("keydown", handleEscape); //cuando este abierto el formulario, aplica el evento de cerrar con Ecp
 
   // Habilitamos la validación en el nuevo formulario clonado
   enableValidation(validationConfig);
@@ -183,11 +184,18 @@ function openPopup() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileAbout.textContent;
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", handleEscape); // Agrega el evento de la tecla Esc
 }
 
 // Cierra el popup
 function closePopup() {
-  popup.classList.remove("popup_opened");
+  //Busca todos los popups abiertos iterando y los cierra
+  document
+    .querySelectorAll(".popup_opened, .card-popup_opened")
+    .forEach((popup) => {
+      popup.classList.remove("popup_opened", "card-popup_opened");
+    });
+  document.removeEventListener("keydown", handleEscape); // Elimina el evento de la tecla Esc
 }
 
 // Maneja el envío del formulario de perfil
@@ -206,16 +214,11 @@ form.addEventListener("submit", handleProfileFormSubmit);
 
 // --- CERRAR TODOS LOS POPUPS CON ESCAPE ---
 
-document.addEventListener("keydown", (evt) => {
+function handleEscape(evt) {
   if (evt.key === "Escape") {
-    //Busca todos los popups abiertos
-    document
-      .querySelectorAll(".popup_opened, .card-popup_opened")
-      .forEach((popup) => {
-        popup.classList.remove("popup_opened", "card-popup_opened");
-      });
+    closePopup();
   }
-});
+}
 
 // --- CERRAR POPUPS HACIENDO CLIC EN EL FONDO OSCURO ---
 
@@ -224,6 +227,6 @@ document.addEventListener("click", (evt) => {
     evt.target.classList.contains("popup_opened") ||
     evt.target.classList.contains("card-popup_opened")
   ) {
-    evt.target.classList.remove("popup_opened", "card-popup_opened");
+    closePopup();
   }
 });
