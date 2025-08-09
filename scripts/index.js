@@ -1,141 +1,120 @@
-// ======== SECCIÓN: Selección de elementos del DOM ==========
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+import {
+  closeImagePopup,
+  closePopup,
+  enableGlobalPopupClose,
+  enableOverlayClose,
+  openPopup,
+} from "./utils.js";
 
-// Popup de editar perfil
-const popup = document.querySelector(".popup");
+// ======== SECCIÓN: Selección y referencia de elementos del DOM ========
+
+// Popup para edición de perfil
+export const popup = document.querySelector(".popup");
 const openButton = document.querySelector(".profile__button-edit");
 const closeButton = document.querySelector(".popup__button-close");
 
-// Formulario y campos del popup original
+// Formulario y campos de entrada del popup de edición
 const form = document.querySelector(".popup__form");
-const nameInput = document.querySelector("#name");
-const jobInput = document.querySelector("#about-me");
-// const formInput = form.querySelector(".popup__input");
+export const nameInput = document.querySelector("#name");
+export const jobInput = document.querySelector("#about-me");
 
-// Campos de perfil (los que se actualizan)
-const profileName = document.querySelector(".profile__name");
-const profileAbout = document.querySelector(".profile__about-me");
+// Elementos de perfil que serán actualizados
+export const profileName = document.querySelector(".profile__name");
+export const profileAbout = document.querySelector(".profile__about-me");
 
 // Botón para agregar nuevas tarjetas y contenedor para formularios clonados
 const btnAddForm = document.querySelector(".profile__button-add");
 const contentFormClone = document.querySelector("#form-clone");
 
-// Template y contenedor de tarjetas
-const cards = document.querySelector(".elements");
-const cardTemplate = document.querySelector("#elements-template").content;
+// Contenedor principal de tarjetas y plantilla (template) para clonación
+const cardsContainer = document.querySelector(".elements");
+// const closeButtonCardPopup = document.querySelector(
+//   ".card-popup__button-close"
+// );
 
-// Popup de imagen ampliada
-const imagePopup = document.querySelector(".card-popup");
-const popupImage = document.querySelector(".card-popup__image");
-const popupCaption = document.querySelector(".card-popup__caption");
-const closeButtonCardPopup = document.querySelector(
-  ".card-popup__button-close"
-);
+// ---  CONFIGURACIÓN DE CLASES Y SELECTORES ---
 
-// ========= SECCIÓN: Funciones de tarjetas ==========
+const validationConfig = {
+  formSelector: ".popup__form", // Selector para el formulario
+  inputSelector: ".popup__input", // Selector para los inputs dentro del formulario
+  submitButtonSelector: ".popup__button", // Selector para el botón submit
+  inactiveButtonClass: "popup__button_disabled", // Clase que desactiva botón
+  inputErrorClass: "popup__input_type_error", // Clase de borde rojo o similar
+  errorClass: "popup__error_visible", // Clase que hace visible el mensaje de error
+};
 
-// Abre el popup con la imagen ampliada
-function openImagePopup(imageSrc, title) {
-  popupImage.src = imageSrc;
-  popupImage.alt = `fotografía de: ${title}`;
-  popupCaption.textContent = title;
-  imagePopup.classList.add("card-popup_opened");
-}
+// --- APLICAR VALIDACIÓN A TODOS LOS FORMULARIOS DE LA PÁGINA ---
 
-// Cierra el popup de imagen ampliada
-closeButtonCardPopup.addEventListener("click", () => {
-  imagePopup.classList.remove("card-popup_opened");
+// Instanciación y activación de validación por cada formulario
+const formList = Array.from(
+  document.querySelectorAll(validationConfig.formSelector)
+); //Todos los <form>
+formList.forEach((formElement) => {
+  const validador = new FormValidator(validationConfig, formElement);
+  validador.enableValidation();
 });
 
-// Crea y añade una tarjeta al DOM
-function addCard(cardTitle, cardImage) {
-  const cardElement = cardTemplate
-    .querySelector(".elements__card")
-    .cloneNode(true); // Clonamos el template
+// ======== SECCIÓN: Datos iniciales para tarjetas ========
 
-  // Asignamos la imagen y el texto
-  cardElement.querySelector(".elements__card-title").textContent = cardTitle;
-  const image = cardElement.querySelector(".elements__card-image");
-  image.src = cardImage;
-  image.alt = `fotografía de: ${cardTitle}`;
-
-  // Evento: abrir imagen ampliada
-  image.addEventListener("click", () => {
-    openImagePopup(cardImage, cardTitle);
-  });
-
-  // Evento: toggle de "like"
-  cardElement
-    .querySelector(".elements__card-favorite")
-    .addEventListener("click", (evt) => {
-      evt.target.classList.toggle("elements__card-favorite_active");
-    });
-
-  // Evento: eliminar tarjeta
-  cardElement
-    .querySelector(".elements__trash")
-    .addEventListener("click", () => {
-      cardElement.remove();
-    });
-
-  // Inserta al principio
-  cards.prepend(cardElement);
-}
-
-// ======== SECCIÓN: Tarjetas iniciales =========
-
-// tarjetas iniciales
 const initialCards = [
   {
-    name: "Valle de Yosemite",
-    link: "./images/card__image_yosemite.jpg",
+    cardTitle: "Valle de Yosemite",
+    cardImage: "./images/card__image_yosemite.jpg",
   },
   {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
+    cardTitle: "Lago Louise",
+    cardImage:
+      "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
   },
   {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
+    cardTitle: "Montañas Calvas",
+    cardImage:
+      "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
   },
   {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
+    cardTitle: "Latemar",
+    cardImage:
+      "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
   },
   {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
+    cardTitle: "Parque Nacional de la Vanoise",
+    cardImage:
+      "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
   },
   {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
+    cardTitle: "Lago di Braies",
+    cardImage:
+      "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
 ];
 
-// Agregar tarjetas iniciales con el Array initialCards
+// Inserta tarjetas iniciales en el contenedor principal, se una instancia de la clase y se muestra
 initialCards.forEach((card) => {
-  addCard(card.name, card.link);
+  const cardInstance = new Card(card, "#elements-template");
+  const cardElement = cardInstance.addCard();
+  cardsContainer.prepend(cardElement);
 });
 
-// ======== SECCIÓN: Lógica para formulario clonado =========
-
-// Evento para clonar y abrir el formulario nuevo
+// ======== SECCIÓN: Gestión del formulario clonado para nuevas tarjetas ========
 
 //Encapsular el código del clonador de formularios en una función
 function createFormClone() {
-  const formClone = popup.cloneNode(true); // Clonamos el popup original
+  const formClone = popup.cloneNode(true); // Clonamos el popup original, para crear un formulario independiente
 
-  // Modificamos textos del formulario clonado
+  // Cambia el título y texto del botón del formulario clonado
   formClone.querySelector(".popup__title").textContent = "Nuevo Lugar";
   formClone.querySelector(".popup__button").textContent = "Crear";
 
-  // Configuramos los inputs del formulario clonado
+  // Configura los inputs del formulario clonado para título e imagen
   const inputs = formClone.querySelectorAll("input");
-
   const [titleInput, urlInput] = inputs;
 
   titleInput.value = "";
   titleInput.placeholder = "Titulo";
   titleInput.setAttribute("maxlength", 30);
+
   urlInput.value = "";
   urlInput.placeholder = "Enlace a la Imagen";
   urlInput.type = "url";
@@ -154,52 +133,49 @@ function createFormClone() {
     e.preventDefault();
 
     //Obtiene los valores ingresados al momento de enviar
-    const cardTitle = inputs[0].value;
-    const cardImage = inputs[1].value;
+    const cardTitle = titleInput.value;
+    const cardImage = urlInput.value;
 
-    // Crea la tarjeta
-    addCard(cardTitle, cardImage);
+    // Crea una nueva tarjeta y la inserta al principio del contenedor
+    const newCard = new Card({ cardTitle, cardImage }, "#elements-template");
+    const cardElement = newCard.addCard();
+    cardsContainer.prepend(cardElement);
 
-    // Cierra y elimina el formulario
+    // Remueve el formulario clonado después de crear la tarjeta
     formClone.remove();
   });
 
-  // Mostramos el formulario clonado
+  // Muestra el formulario clonado
   formClone.classList.add("popup_opened");
   contentFormClone.append(formClone);
 
-  // Habilitamos la validación en el nuevo formulario clonado
-  enableValidation(validationConfig);
-
-  return formClone;
+  // Inicializa la validación en el formulario clonado
+  const cloneValidator = new FormValidator(validationConfig, formInClone);
+  cloneValidator.enableValidation();
 }
-
+// Evento para mostrar el formulario clonado al pulsar botón "Agregar nuevo"
 btnAddForm.addEventListener("click", createFormClone);
 
-// ======== SECCIÓN: Popup de perfil =========
-
-// Abre el popup original de editar perfil y carga datos actuales
-function openPopup() {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileAbout.textContent;
-  popup.classList.add("popup_opened");
-}
-
-// Cierra el popup
-function closePopup() {
-  popup.classList.remove("popup_opened");
-}
-
-// Maneja el envío del formulario de perfil
+// Maneja el envío del formulario de edición de perfil: actualiza datos y cierra popup
 function handleProfileFormSubmit(evt) {
-  evt.preventDefault(); // Previene el envío del form
+  evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileAbout.textContent = jobInput.value;
   closePopup();
 }
 
-// ======== SECCIÓN: Eventos =========
+// ======== SECCIÓN: Eventos globales para apertura y cierre de popups ========
 
 openButton.addEventListener("click", openPopup);
 closeButton.addEventListener("click", closePopup);
 form.addEventListener("submit", handleProfileFormSubmit);
+
+// Popup imagen ampliada
+const closeButtonCardPopup = document.querySelector(
+  ".card-popup__button-close"
+);
+closeButtonCardPopup.addEventListener("click", closeImagePopup);
+
+// Habilitar cierre global y overlay
+enableGlobalPopupClose();
+enableOverlayClose();

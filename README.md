@@ -1,8 +1,8 @@
-# Proyecto 7, 8 y 9: Tripleten web_project_around
+# Proyecto: Tripleten web_project_around
 
 # 🗺️ Alrededor de los EE.UU.
 
-## Bienvenido a Alrededor de los EE.UU., una aplicación web interactiva desarrollada con HTML, CSS y JavaScript puro. En este proyecto, los usuarios pueden editar su perfil, añadir nuevas tarjetas con imágenes, dar "me gusta" a las fotos y eliminar tarjetas de forma dinámica, con formularios que cuentan con validación avanzada y gestión eficiente del estado.
+## Alrededor de los EE.UU. es una aplicación web desarrollada con HTML, CSS y JavaScript puro, diseñada para proporcionar una experiencia interactiva que permite a los usuarios editar su perfil, agregar nuevas tarjetas con imágenes, gestionar "me gusta" y eliminar tarjetas de forma dinámica. El proyecto incorpora una validación avanzada de formularios y una gestión eficiente del estado de los elementos interactivos, todo implementado sin el uso de librerías externas.
 
 ## 📚 Tabla de Contenido
 
@@ -18,13 +18,14 @@
 
 Este proyecto fue creado como parte del curso de desarrollo web para aplicar conceptos esenciales como:
 
-- Manipulación dinámica del DOM.
-- Creación y control de ventanas emergentes (modales) con apertura y cierre controlados.
-- Validación y gestión avanzada de formularios con mensajes de error claros y activación/desactivación dinámica del botón enviar.
-- Interacción del usuario sin uso de librerías externas.
+- Manipulación dinámica del DOM para una experiencia de usuario reactiva.
+- Creación y control eficiente de modales (ventanas emergentes) con mecanismos claros de apertura y cierre.
+- Validación avanzada de formularios, incluyendo mensajes de error contextuales y control dinámico del estado del botón de envío.
 - Formularios interactivos, originales y clonados, con lógica modular y reutilizable.
-- Buenas prácticas con HTML semántico y CSS modular.
-- Interactividad sin frameworks externos.
+- Uso de buenas prácticas en HTML semántico y CSS modular para asegurar mantenibilidad y escalabilidad.
+- Desarrollo de interfaces interactivas sin dependencia de frameworks o librerías externas.
+- Aplicación rigurosa de Programación Orientada a Objetos (POO) para encapsular comportamientos y atributos en clases reutilizables y aisladas, específicamente en la gestión de tarjetas.
+- Uso de encapsulación para proteger el estado interno de objetos y limitar la interacción directa con propiedades, asegurando integridad y control.
 
 ---
 
@@ -34,6 +35,7 @@ Este proyecto fue creado como parte del curso de desarrollo web para aplicar con
 - 🎨 **CSS3** – diseño responsivo y modular.
 - ⚙️ **JavaScript** – lógica interactiva, validación y modularidad.
 - 🌐 **Git & GitHub** – control de versiones y despliegue.
+- POO: Clases Card y FormValidator que abstraen funcionalidades específicas y permiten crear múltiples instancias con comportamientos independientes y encapsulados.
 
 ---
 
@@ -43,7 +45,7 @@ Este proyecto fue creado como parte del curso de desarrollo web para aplicar con
 - ➕ Añadir nuevas tarjetas (imagen + título) mediante formularios clonados con validación..
 - ❤️ Dar "me gusta" a cualquier tarjeta.
 - 🗑️ Eliminar tarjetas de forma dinámica.
-- 🔍 Visualizar imágenes en tamaño ampliado con popup.
+- 🔍 Visualización ampliada de imágenes mediante ventanas emergentes (popups).
 - 🧠 Validación modular para formularios originales y clonados.
 
 ---
@@ -63,7 +65,6 @@ Puedes ver el proyecto en acción aquí:
 
 ## 🧪 Mejoras Futuras
 
-- Validación avanzada de formularios.
 - Almacenamiento de tarjetas en localStorage.
 - Subida de imágenes desde el dispositivo.
 - Transiciones y animaciones suaves con CSS.
