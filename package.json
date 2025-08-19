@@ -1,0 +1,20 @@
+{
+  "name": "web_project_around",
+  "version": "0.0.1",
+  "description": "Educacion",
+  "homepage": "https://github.com/AlejandroM21/web_project_around#readme",
+  "bugs": {
+    "url": "https://github.com/AlejandroM21/web_project_around/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlejandroM21/web_project_around.git"
+  },
+  "license": "ISC",
+  "author": "Alejandro Melendez",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
