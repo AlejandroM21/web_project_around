@@ -35,7 +35,7 @@ Este proyecto fue creado como parte del curso de desarrollo web para aplicar con
 - 🎨 **CSS3** – diseño responsivo y modular.
 - ⚙️ **JavaScript** – lógica interactiva, validación y modularidad.
 - 🌐 **Git & GitHub** – control de versiones y despliegue.
-- POO: Clases Card y FormValidator que abstraen funcionalidades específicas y permiten crear múltiples instancias con comportamientos independientes y encapsulados.
+- POO: Clases Card, FormValidator, Section, UserInfo, PopupWithForm y PopupWithImage que abstraen funcionalidades específicas y permiten crear múltiples instancias con comportamientos independientes y encapsulados.
 
 ---
 
@@ -47,6 +47,9 @@ Este proyecto fue creado como parte del curso de desarrollo web para aplicar con
 - 🗑️ Eliminar tarjetas de forma dinámica.
 - 🔍 Visualización ampliada de imágenes mediante ventanas emergentes (popups).
 - 🧠 Validación modular para formularios originales y clonados.
+- 🧩 Arquitectura modular y POO, con clases Card, FormValidator, Section, UserInfo, PopupWithForm y PopupWithImage que encapsulan comportamientos específicos y promueven la reutilización.
+- 🏗️ Gestión eficiente del DOM, incluyendo renderizado inicial de tarjetas y manipulación dinámica de listas mediante la clase Section.
+- 🔄 Escuchadores de eventos centralizados, que permiten apertura/cierre de popups y envío de formularios sin recargar la página.
 
 ---
 
