@@ -86,8 +86,8 @@ El proyecto se construyó con una arquitectura modular y escalable utilizando **
 ## 🎥 Video de demostración
 
 <p align="center">
-  <a href="https://youtu.be/Ru1bY7e1UWI">
-    <img src="./images/cards_actions.gif" alt="Mira la demo">
+  <a href="https://youtu.be/Ru1bY7e1UWI"  target="_blank">
+    <img src="./images/cards_actions.gif" alt="Mira la demo" width="600">
   </a>
 </p>
 
