@@ -28,15 +28,27 @@
           <div class="profile__avatar">
             <img
               src="./images/avatar.jpg"
-              alt="avatar"
+              alt="Avatar Por Defecto"
               class="profile__avatar-image"
             />
+            <!-- Botón para actualizar avatar -->
+            <button
+              class="profile__button-update-avatar"
+              aria-label="Editar Avatar"
+            >
+              <img
+                class="profile__button-update-image"
+                src="./images/button_edit.png"
+                alt="Ícono de lápiz para editar Avatar"
+              />
+            </button>
           </div>
 
           <!-- Info del perfil -->
           <div class="profile__info">
             <div class="profile__info-name">
-              <h2 class="profile__name">Jacques Cousteau</h2>
+              <h2 class="profile__name">Cargando...</h2>
+              <!-- Botón para editar perfil -->
               <button class="profile__button-edit" aria-label="Editar perfil">
                 <img
                   class="profile__button-edit-image"
@@ -45,7 +57,7 @@
                 />
               </button>
             </div>
-            <p class="profile__about-me block">Explorador</p>
+            <p class="profile__about-me block"></p>
           </div>
 
           <!-- Botón para añadir nuevas tarjetas -->
@@ -79,6 +91,7 @@
       </main>
 
       <!-- ================= POPUP EDITAR PERFIL ================= -->
+      <!-- Formulario Editar Perfil  -->
       <div class="popup popup_type_profile">
         <div class="popup__overlay">
           <!-- Botón de cierre -->
@@ -94,7 +107,6 @@
           </button>
           <h3 class="popup__title">Editar perfil</h3>
 
-          <!-- Formulario  -->
           <form class="popup__form" novalidate>
             <label for="name">
               <input
@@ -129,8 +141,44 @@
         </div>
       </div>
 
-      <!-- ================= POPUP AGREGAR TARJETA ================= -->
-      <div class="popup popup_add">
+      <!-- Formulario Cambiar Avatar  -->
+      <div class="popup popup__avatar">
+        <div class="popup__overlay">
+          <!-- Botón de cierre -->
+          <button
+            class="popup__button-close"
+            aria-label="Cerrar formulario Avatar"
+          >
+            <img
+              src="./images/Close_Icon.png"
+              alt="Cerrar formulario"
+              class="popup__icono-close"
+            />
+          </button>
+          <h3 class="popup__title">Cambiar foto de perfil</h3>
+
+          <form class="popup__form popup__form_avatar" novalidate>
+            <label for="avatar">
+              <input
+                type="url"
+                class="popup__input popup__input_type_avatar-link"
+                id="avatar"
+                name="avatar"
+                placeholder="Enlace foto de perfil"
+                required
+              />
+              <span class="popup__error avatar-error"></span>
+            </label>
+            <button type="submit" class="popup__button popup__button-avatar">
+              Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ================= POPUP  TARJETAS ================= -->
+      <!-- Formulario Agregar Cards -->
+      <div class="popup popup__add">
         <div class="popup__overlay">
           <!-- Botón de cierre -->
           <button
@@ -145,7 +193,6 @@
           </button>
           <h3 class="popup__title">Nuevo Lugar</h3>
 
-          <!-- Formulario -->
           <form class="popup__form popup__form_add" novalidate>
             <label for="place-name">
               <input
@@ -180,6 +227,30 @@
         </div>
       </div>
 
+      <!-- Formulario Confirmaion trash de la tarjeta  -->
+      <div class="popup popup__trash">
+        <div class="popup__overlay">
+          <!-- Botón de cierre -->
+          <button
+            class="popup__button-close"
+            aria-label="Cerrar formulario Trash"
+          >
+            <img
+              src="./images/Close_Icon.png"
+              alt="Cerrar formulario"
+              class="popup__icono-close"
+            />
+          </button>
+          <h3 class="popup__title popup__title-trash">¿Estás seguro/a?</h3>
+
+          <form class="popup__form popup__form_trash" novalidate>
+            <button type="submit" class="popup__button popup__button_add">
+              Si
+            </button>
+          </form>
+        </div>
+      </div>
+
       <!-- ================= POPUP IMAGEN AMPLIADA ================= -->
       <div class="card-popup">
         <div class="card-popup__overlay">
@@ -209,6 +280,6 @@
     </div>
 
     <!-- ================= JS PRINCIPAL ================= -->
-    <script type="module" src="./scripts/page/index.js"></script>
+    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>

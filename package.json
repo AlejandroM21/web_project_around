@@ -1,20 +1,20 @@
 {
   "name": "web_project_around",
-  "version": "0.0.1",
-  "description": "Educacion",
-  "homepage": "https://github.com/AlejandroM21/web_project_around#readme",
-  "bugs": {
-    "url": "https://github.com/AlejandroM21/web_project_around/issues"
+  "version": "1.0.0",
+  "description": "- [🎯 Objetivo del Proyecto](#-objetivo-del-proyecto)\r - [🧰 Tecnologías Utilizadas](#-tecnologías-utilizadas)\r - [⚙️ Funcionalidades Clave](#️-funcionalidades-clave)\r - [🖼️ Captura de Pantalla](#-captura-de-pantalla)\r - [🚀 Cómo Visualizar el Proyecto](#-cómo-visualizar-el-proyecto)\r - [🧪 Mejoras Futuras](#-mejoras-futuras)\r - [👨‍💻 Autor](#-autor)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlejandroM21/web_project_around.git"
   },
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "author": "Alejandro Melendez",
-  "type": "commonjs",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  "bugs": {
+    "url": "https://github.com/AlejandroM21/web_project_around/issues"
+  },
+  "homepage": "https://github.com/AlejandroM21/web_project_around#readme"
 }

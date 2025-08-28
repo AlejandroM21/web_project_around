@@ -11,12 +11,38 @@
   height: 120px;
   border-radius: 50%;
   overflow: hidden;
+  position: relative;
+  cursor: pointer;
 }
 
 .profile__avatar-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.profile__button-update-avatar {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #000000cc;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  display: none;
+  justify-content: center;
+}
+
+.profile__avatar:hover .profile__button-update-avatar {
+  display: flex;
+}
+
+.profile__button-update-image {
+  width: 26px;
+  height: 26px;
 }
 
 .profile__info {

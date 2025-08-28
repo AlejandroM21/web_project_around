@@ -4,8 +4,7 @@
 export class Section {
   // El constructor recibe un objeto con el array de datos y el renderizador,
   // y un selector del contenedor donde se insertarán los elementos .
-  constructor({ items, renderer }, containerSelector) {
-    this._initialArrayCards = items; // Datos iniciales
+  constructor({ renderer }, containerSelector) {
     this._renderer = renderer; //función que crea el elemento (una tarjeta)
     this._container = document.querySelector(containerSelector);
   }
@@ -23,9 +22,9 @@ export class Section {
   // itera sobre los datos iniciales y llama a la función renderer para cada elemento,
   // cargando los elementos iniciales de la página
 
-  renderItems() {
-    this._initialArrayCards.forEach((card) => {
-      this._renderer(card);
+  renderItems(items) {
+    items.forEach((item) => {
+      this._renderer(item);
     });
   }
 }
