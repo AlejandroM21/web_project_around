@@ -7,7 +7,7 @@
 - [🎯 Objetivo del Proyecto](#-objetivo-del-proyecto)
 - [🧰 Tecnologías Utilizadas](#-tecnologías-utilizadas)
 - [⚙️ Funcionalidades Clave](#️-funcionalidades-clave)
-- [🖼️ Capturas de Pantalla](#-captura-de-pantalla)
+- [🖼️ Captura de Pantalla](#️-captura-de-pantalla)
 - [🎥 Video de Demostración](#-video-de-demostración)
 - [🚀 Cómo Visualizar el Proyecto](#-cómo-visualizar-el-proyecto)
 - [🧪 Mejoras Futuras](#-mejoras-futuras)
@@ -25,7 +25,7 @@ El proyecto se construyó con una arquitectura modular y escalable utilizando **
 - Creación y control eficiente de modales (ventanas emergentes).
 - Validación avanzada de formularios con mensajes de error contextuales.
 - Formularios interactivos con lógica modular y reutilizable.
-- POO en JavaScript (clases como Card, FormValidator, Section, API, entre otras)
+- POO en JavaScript (clases como Card, FormValidator, Section, API, entre otras).
 - Encapsulación y modularidad, asegurando código mantenible.
 - Programación asíncrona con Promises, y fetch.
 - Consumo de APIs REST.
@@ -64,7 +64,9 @@ El proyecto se construyó con una arquitectura modular y escalable utilizando **
 ### Vista principal
 
 <p align="center">
-  <img src="./images/screenshot_project.jpg" alt="Vista principal del proyecto" width="600">
+  <a href="https://youtu.be/Ru1bY7e1UWI" target="_blank" rel="noopener noreferrer">
+    <img src="./images/screenshot_project.jpg" alt="Vista principal del proyecto" width="600">
+  </a>
 </p>
 
 ### Actualización de Perfil y Avatar
@@ -83,13 +85,17 @@ El proyecto se construyó con una arquitectura modular y escalable utilizando **
 
 ## 🎥 Video de demostración
 
-[![Mira la demo](./images/screenshot_project.jpg)](https://youtu.be/Ru1bY7e1UWI)
+<p align="center">
+  <a href="https://youtu.be/Ru1bY7e1UWI">
+    <img src="./images/cards_actions.gif" alt="Mira la demo">
+  </a>
+</p>
 
 ---
 
-## 🏁 Cómo visualizar el proyecto
+## 🚀 Cómo Visualizar el Proyecto
 
-Puedes ver el proyecto en acción aquí:  
+Puedes ver el proyecto en acción aquí:
 👉 [https://alejandrom21.github.io/web_project_around/](https://alejandrom21.github.io/web_project_around/)
 
 ---
