@@ -1,31 +1,35 @@
-# Proyecto: Tripleten web_project_around
+# 🗺️ Alrededor de los EE.UU. (Proyecto: Tripleten web_project_around)
 
-# 🗺️ Alrededor de los EE.UU.
-
-## Alrededor de los EE.UU. es una aplicación web desarrollada con HTML, CSS y JavaScript puro, diseñada para proporcionar una experiencia interactiva que permite a los usuarios editar su perfil, agregar nuevas tarjetas con imágenes, gestionar "me gusta" y eliminar tarjetas de forma dinámica. El proyecto incorpora una validación avanzada de formularios y una gestión eficiente del estado de los elementos interactivos, todo implementado sin el uso de librerías externas.
+## Alrededor de los EE.UU. es una aplicación web interactiva desarrollada con HTML, CSS y JavaScript puro. Permite a los usuarios gestionar su perfil, agregar tarjetas con imágenes, interactuar con ellas (dar "me gusta") y eliminarlas dinámicamente. El proyecto integra validación de formularios y una gestión eficiente del estado, todo implementado sin librerías externas para un control total del código.
 
 ## 📚 Tabla de Contenido
 
 - [🎯 Objetivo del Proyecto](#-objetivo-del-proyecto)
 - [🧰 Tecnologías Utilizadas](#-tecnologías-utilizadas)
 - [⚙️ Funcionalidades Clave](#️-funcionalidades-clave)
-- [🖼️ Captura de Pantalla](#-captura-de-pantalla)
+- [🖼️ Capturas de Pantalla](#-captura-de-pantalla)
+- [🎥 Video de Demostración](#-video-de-demostración)
 - [🚀 Cómo Visualizar el Proyecto](#-cómo-visualizar-el-proyecto)
 - [🧪 Mejoras Futuras](#-mejoras-futuras)
 - [👨‍💻 Autor](#-autor)
 
 ## 🎯 Objetivo del Proyecto
 
-Este proyecto fue creado como parte del curso de desarrollo web para aplicar conceptos esenciales como:
+Este proyecto fue creado como parte del curso de desarrollo web de TripleTen para aplicar conceptos esenciales de desarrollo front-end, incluyendo la manipulación del DOM, la validación de formularios y la programación orientada a objetos (POO) en JavaScript.
+
+El proyecto se construyó con una arquitectura modular y escalable utilizando **HTML5** para la estructura semántica, **CSS3** para el diseño responsivo y **JavaScript (ES6+)** para toda la lógica interactiva.
+
+**La arquitectura del proyecto se basa en los siguientes principios:**
 
 - Manipulación dinámica del DOM para una experiencia de usuario reactiva.
-- Creación y control eficiente de modales (ventanas emergentes) con mecanismos claros de apertura y cierre.
-- Validación avanzada de formularios, incluyendo mensajes de error contextuales y control dinámico del estado del botón de envío.
-- Formularios interactivos, originales y clonados, con lógica modular y reutilizable.
-- Uso de buenas prácticas en HTML semántico y CSS modular para asegurar mantenibilidad y escalabilidad.
-- Desarrollo de interfaces interactivas sin dependencia de frameworks o librerías externas.
-- Aplicación rigurosa de Programación Orientada a Objetos (POO) para encapsular comportamientos y atributos en clases reutilizables y aisladas, específicamente en la gestión de tarjetas.
-- Uso de encapsulación para proteger el estado interno de objetos y limitar la interacción directa con propiedades, asegurando integridad y control.
+- Creación y control eficiente de modales (ventanas emergentes).
+- Validación avanzada de formularios con mensajes de error contextuales.
+- Formularios interactivos con lógica modular y reutilizable.
+- POO en JavaScript (clases como Card, FormValidator, Section, API, entre otras)
+- Encapsulación y modularidad, asegurando código mantenible.
+- Programación asíncrona con Promises, y fetch.
+- Consumo de APIs REST.
+- Uso de prototipos, constructores e herencia.
 
 ---
 
@@ -33,29 +37,53 @@ Este proyecto fue creado como parte del curso de desarrollo web para aplicar con
 
 - ✅ **HTML5** – estructura semántica clara.
 - 🎨 **CSS3** – diseño responsivo y modular.
-- ⚙️ **JavaScript** – lógica interactiva, validación y modularidad.
-- 🌐 **Git & GitHub** – control de versiones y despliegue.
-- POO: Clases Card, FormValidator, Section, UserInfo, PopupWithForm y PopupWithImage que abstraen funcionalidades específicas y permiten crear múltiples instancias con comportamientos independientes y encapsulados.
+- ⚙️ **JavaScript ES6+** – modularidad, asincronía, clases, promesas y fetch.
+- 🧩 **POO en JS** – clases, herencia y encapsulación.
+- 🌐 **APIs REST** – comunicación cliente/servidor en tiempo real.
+- 🔄 **Programación Asíncrona** – setTimeout, Promises, Promise.all.
+- 🛠️ **Git & GitHub** – control de versiones y despliegue.
 
 ---
 
 ## ⚙️ Funcionalidades Clave
 
 - ✏️ Edición del perfil con carga previa de datos.
-- ➕ Añadir nuevas tarjetas (imagen + título) mediante formularios clonados con validación..
-- ❤️ Dar "me gusta" a cualquier tarjeta.
-- 🗑️ Eliminar tarjetas de forma dinámica.
-- 🔍 Visualización ampliada de imágenes mediante ventanas emergentes (popups).
-- 🧠 Validación modular para formularios originales y clonados.
-- 🧩 Arquitectura modular y POO, con clases Card, FormValidator, Section, UserInfo, PopupWithForm y PopupWithImage que encapsulan comportamientos específicos y promueven la reutilización.
-- 🏗️ Gestión eficiente del DOM, incluyendo renderizado inicial de tarjetas y manipulación dinámica de listas mediante la clase Section.
-- 🔄 Escuchadores de eventos centralizados, que permiten apertura/cierre de popups y envío de formularios sin recargar la página.
+- ➕ Añadir nuevas tarjetas (imagen + título) mediante formularios con validación.
+- ❤️ Dar "me gusta" dinámicamente.
+- 🗑️ Eliminar tarjetas de forma inmediata.
+- 🔍 Ampliar imágenes con popups.
+- 🧠 Validación modular de formularios.
+- 🌐 Consumo de API REST para manejar datos de tarjetas/usuarios.
+- 🔄 Fetch + Promises para obtener y enviar información a endpoints.
+- 🏗️ Arquitectura modular y escalable basada en clases.
 
 ---
 
 ## 🖼️ Captura de Pantalla
 
-![Vista previa del proyecto](./images/screenshot_project.jpg)
+### Vista principal
+
+<p align="center">
+  <img src="./images/screenshot_project.jpg" alt="Vista principal del proyecto" width="600">
+</p>
+
+### Actualización de Perfil y Avatar
+
+<p align="center">
+  <img src="./images/edit_user_avatar.gif" alt="Formulario de edición de perfil y avatar" width="600">
+</p>
+
+### ✨ Agregar, Eliminar, Dar Like y Ampliar Tarjetas
+
+<p align="center">
+  <img src="./images/cards_actions.gif" alt="Acciones con tarjetas: agregar, eliminar, dar like y ampliar" width="600">
+</p>
+
+---
+
+## 🎥 Video de demostración
+
+[![Mira la demo](./images/screenshot_project.jpg)](https://youtu.be/Ru1bY7e1UWI)
 
 ---
 
@@ -68,10 +96,8 @@ Puedes ver el proyecto en acción aquí:
 
 ## 🧪 Mejoras Futuras
 
-- Almacenamiento de tarjetas en localStorage.
+- Uso de localStorage como cache offline.
 - Subida de imágenes desde el dispositivo.
-- Transiciones y animaciones suaves con CSS.
-- Mejora de accesibilidad (uso de ARIA y navegación con teclado).
 
 ---
 

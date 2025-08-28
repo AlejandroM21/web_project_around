@@ -17,13 +17,13 @@ export class PopupWithForm extends Popup {
 
   // Devuelve un objeto con  los valores de todos los inputs del formulario
   _getInputValues() {
-    this._formValues = {};
+    const formValues = {};
 
     // Itera sobre cada input y agrega su nombre y valor al objeto
     this._inputList.forEach((input) => {
-      this._formValues[input.name] = input.value;
+      formValues[input.name] = input.value;
     });
-    return this._formValues;
+    return formValues;
   }
 
   //método para establecer los valores de los inputs.
@@ -46,7 +46,6 @@ export class PopupWithForm extends Popup {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues()); // Llama al callback con los datos del formulario
-      this.close(); // Cierra el popup después de enviar los datos
     });
   }
 
@@ -54,5 +53,11 @@ export class PopupWithForm extends Popup {
   close() {
     super.close(); // Ejecuta el cierre estándar de la clase padre
     this._form.reset(); // Limpia todos los campos del formulario
+  }
+
+  renderLoading(isLoading, defaultText) {
+    const submitButton = this._form.querySelector(".popup__button");
+    submitButton.textContent = isLoading ? "Guardando..." : defaultText;
+    submitButton.disabled = isLoading;
   }
 }
